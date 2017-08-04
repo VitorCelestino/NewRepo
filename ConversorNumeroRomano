@@ -1,0 +1,47 @@
+package br.com.vitorcelestino.main;
+
+import java.util.Scanner;
+
+public class Conversor {	
+	
+	public static void main(String[]args){
+		
+		Scanner entrada = new Scanner(System.in);
+		String unidades[] = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+		String dezenas[] = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+		String centenas[] = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+		
+		
+		int valor,arab;
+		int i = 0;
+		String romano = "";
+		
+		System.out.print("Informe um numero entre 1 e 3999:");
+        valor = entrada.nextInt();
+        arab = valor;
+        while(valor > 1000){
+        	valor -= 1000;
+        	romano = romano + "M";
+        }
+		
+        if(valor <= 999){
+        	i = valor / 100;
+        	valor = (valor - (i * 100));
+        	romano = romano + centenas[i];
+        	
+        }
+        
+        if(valor <= 99 && valor >= 10){
+        	i = valor / 10;
+        	romano = romano + dezenas[i];
+        	valor = valor - (i * 10);
+        }
+        if(valor <=9 ){
+        	i = valor % 10;
+        	romano = romano + unidades[i];
+        }
+        
+        System.out.println("O numero: "+arab+" em romano é: "+romano);
+}
+}
+
